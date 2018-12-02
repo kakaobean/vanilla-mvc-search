@@ -15,11 +15,15 @@ FormView.setup = function(el){
 
 FormView.showResetBtn = function(show = true){
     this.resetEl.style.display = show ? 'block' : 'none'
-}
+}   
 FormView.bindEvents = function(){
     this.on('submit',e => e.preventDefault())
-    this.inputEl.addEventListener('keyup', e=> this.onKeyup(e))
+    
+    this.inputEl.addEventListener('keyup', e=> this.onKeyup(e)) 
     this.resetEl.addEventListener('click', e=> this.onClick(e))
+}
+FormView.placeholderView= function(e){
+    this.inputEl.value = e
 }
 
 FormView.onKeyup = function(e){

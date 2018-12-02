@@ -12,6 +12,7 @@ ResultView.setup = function (el){
     this.init(el)
 }
 
+
 ResultView.render = function(data = []){
     console.log(tag, 'render()', data)
     this.el.innerHTML = data.length ? this.getSearchResultsHtml(data) : this.message.NO_RESULT
@@ -19,8 +20,22 @@ ResultView.render = function(data = []){
 }
 
 ResultView.getSearchResultsHtml = function (data){
-    return JSON.stringify(data);
+    
+    return data.reduce((html, item) => {
+        html += this.getSearchItemHtml(item)
+        return html
+    }, '<ul>') + '</ul>'
+    //return JSON.stringify(data);
    // debugger
+}
+
+ResultView.getSearchItemHtml = function(item){
+    return `
+        <li>
+            <img src="${item.image}">
+            <p>${item.name}</p>
+        </li>
+         `
 }
 
 export default ResultView
