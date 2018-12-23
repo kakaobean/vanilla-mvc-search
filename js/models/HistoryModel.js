@@ -10,9 +10,12 @@ export default {
   },
   
   add(keyword = '') {
-    keyword = keyword.trim()
+    //keyword = keyword.trim()
+    console.log(keyword +'add함수2')
+    //this.data.push(11 )
     if (!keyword) return 
     if (this.data.some(item => item.keyword === keyword)) {
+      console.log(keyword +'add함수')
       this.remove(keyword)
     }
 
@@ -22,5 +25,8 @@ export default {
   
   remove(keyword) {
     this.data = this.data.filter(item => item.keyword !== keyword)
+    console.log(this.data)
+    
+    
   }
 }
